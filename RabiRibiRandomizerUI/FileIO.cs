@@ -36,10 +36,16 @@ namespace RabiRibiRandomizerUI
             p.StartInfo.Arguments = arguments;
             p.StartInfo.UseShellExecute = false;
             p.StartInfo.RedirectStandardOutput = true;
+            p.StartInfo.RedirectStandardError = true;
             p.Start();
 
             string output = p.StandardOutput.ReadToEnd();
             p.WaitForExit();
+
+            if (p.ExitCode == 1)
+            {
+                output = p.StandardError.ReadToEnd();
+            }
 
             return output;
         }
