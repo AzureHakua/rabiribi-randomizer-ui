@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:RabiRibiRandomizerUI"
         mc:Ignorable="d"
-        Title="Bunny Randomizer" Height="441.855" Width="420" Background="#FFF0F0F0" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" Icon="chocolate_2.ico">
+        Title="Bunny Randomizer" Height="420" Width="420" Background="#FFF0F0F0" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" Icon="chocolate_2.ico">
     <Grid>
         <Button Click="Generate_Button_Click" Margin="0,0,10,10" VerticalAlignment="Bottom" HorizontalAlignment="Right" Height="50" Width="120">Randomize!</Button>
         <Grid Name="grd_Params" HorizontalAlignment="Left" Height="299" Margin="10,10,0,0" VerticalAlignment="Top" Width="254" Background="#FFBDBDBD">
@@ -16,14 +16,16 @@
             <TextBox x:Name="txt_Seed" HorizontalAlignment="Left" Height="23" Margin="158,81,0,0" VerticalAlignment="Top" Width="86" MouseEnter="ChangeInfo" MouseLeave="RemoveInfo" />
             <CheckBox x:Name="chk_NoWrite" Content="No write" HorizontalAlignment="Left" Margin="10,134,0,0" VerticalAlignment="Top" MouseEnter="ChangeInfo" MouseLeave="RemoveInfo" />
             <CheckBox x:Name="chk_MusicShuffle" Content="Music shuffle" HorizontalAlignment="Left" Margin="10,157,0,0" VerticalAlignment="Top" MouseEnter="ChangeInfo" MouseLeave="RemoveInfo" />
-            <CheckBox x:Name="chk_EggGoalsMode" Content="Egg goals mode" HorizontalAlignment="Left" Margin="10,229,0,0" VerticalAlignment="Top" MouseEnter="ChangeInfo" MouseLeave="RemoveInfo" />
-            <Label x:Name="lbl_ExtraEggs" Content="Extra eggs" HorizontalAlignment="Left" Margin="10,252,0,0" VerticalAlignment="Top" IsEnabled="{Binding ElementName=chk_EggGoalsMode, Path=IsChecked}" MouseEnter="ChangeInfo" MouseLeave="RemoveInfo" />
-            <TextBox x:Name="txt_ExtraEggs" HorizontalAlignment="Left" Height="23" Margin="88,254,0,0" VerticalAlignment="Top" Width="120" IsEnabled="{Binding ElementName=chk_EggGoalsMode, Path=IsChecked}" MouseEnter="ChangeInfo" MouseLeave="RemoveInfo" />
+            <CheckBox x:Name="chk_EggGoalsMode" Content="Egg goals mode" HorizontalAlignment="Left" Margin="10,222,0,0" VerticalAlignment="Top" MouseEnter="ChangeInfo" MouseLeave="RemoveInfo" />
+            <Label x:Name="lbl_ExtraEggs" Content="Extra eggs" HorizontalAlignment="Left" Margin="10,244,0,0" VerticalAlignment="Top" IsEnabled="{Binding ElementName=chk_EggGoalsMode, Path=IsChecked}" MouseEnter="ChangeInfo" MouseLeave="RemoveInfo" />
+            <TextBox x:Name="txt_ExtraEggs" HorizontalAlignment="Left" Height="23" Margin="88,248,0,0" VerticalAlignment="Top" Width="120" IsEnabled="{Binding ElementName=chk_EggGoalsMode, Path=IsChecked}" MouseEnter="ChangeInfo" MouseLeave="RemoveInfo" />
             <CheckBox x:Name="chk_BgShuffle" Visibility="Hidden" Content="Background shuffle" HorizontalAlignment="Left" Margin="10,180,0,0" VerticalAlignment="Top" MouseEnter="ChangeInfo" MouseLeave="RemoveInfo" />
+            <Button Click="btn_Version_Click" Margin="0,0,0,0" VerticalAlignment="Bottom" HorizontalAlignment="Right" Height="20" Width="60" Content="version"/>
         </Grid>
         <TextBlock x:Name="txt_Info" HorizontalAlignment="Left" Margin="269,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="135" Height="192" Text="{Binding Path=Info}"/>
-        <TextBox x:Name="txt_ExtraParams" HorizontalAlignment="Left" Height="50" Margin="10,0,0,10" TextWrapping="Wrap" VerticalAlignment="Bottom" Width="254" MouseEnter="ChangeInfo" MouseLeave="RemoveInfo" />
-        <Label x:Name="lbl_ExtraParams" Content="Extra Parameters" HorizontalAlignment="Center" Margin="71,0,171,65" VerticalAlignment="Bottom" FontWeight="Bold" FontSize="16" Width="172" MouseEnter="ChangeInfo" MouseLeave="RemoveInfo" />
+        <TextBox x:Name="txt_ExtraParams" HorizontalAlignment="Left" Height="30" Margin="10,0,0,10" TextWrapping="Wrap" VerticalAlignment="Bottom" Width="224" MouseEnter="ChangeInfo" MouseLeave="RemoveInfo" />
+        <Button Click="btn_CmdHelp_Click" Margin="0,0,140,10" VerticalAlignment="Bottom" HorizontalAlignment="Right" Height="30" Width="30" Content="?"/>
+        <Label x:Name="lbl_ExtraParams" Content="Extra Parameters" HorizontalAlignment="Center" Margin="71,0,171,38" VerticalAlignment="Bottom" FontWeight="Bold" FontSize="16" Width="172" MouseEnter="ChangeInfo" MouseLeave="RemoveInfo" />
         <Button Click="Reset_Maps_Click" Margin="0,0,10,69" VerticalAlignment="Bottom" HorizontalAlignment="Right" Height="50" Width="120" Content="Reset Maps"/>
     </Grid>
 </Window>
