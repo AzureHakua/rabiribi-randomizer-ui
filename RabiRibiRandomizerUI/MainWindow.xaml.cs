@@ -97,16 +97,7 @@ namespace RabiRibiRandomizerUI
                 }
             }
 
-            if (txt_ExtraParams.Text != "")
-            {
-                string[] extraParams = txt_ExtraParams.Text.Split(' ');
-                for (int i = 0; i < extraParams.Length; i++)
-                {
-                    settings.Add(extraParams[i]);
-                }
-            }
-
-            string output = FileIO.CallRandomizer(parameters, settings);
+            string output = FileIO.CallRandomizer(parameters, settings, txt_ExtraParams.Text);
 
             MessageBox.Show(output);
 
@@ -117,15 +108,13 @@ namespace RabiRibiRandomizerUI
         private void Reset_Maps_Click(object sender, RoutedEventArgs e)
         {
             Dictionary<string, object> parameters = new Dictionary<string, object>();
-            HashSet<string> settings = new HashSet<string>();
+            HashSet<string> settings = new HashSet<string>() { "reset" };
 
             if (txt_Path.Text != "")
             {
                 parameters.Add("output_dir", txt_Path.Text);
             }
-
-            settings.Add("reset");
-
+            
             string output = FileIO.CallRandomizer(parameters, settings);
 
             MessageBox.Show(output);
@@ -141,6 +130,30 @@ namespace RabiRibiRandomizerUI
                     txt_Path.Text = dialog.FileName;
                 }
             }
+        }
+
+        private void btn_Version_Click(object sender, RoutedEventArgs e)
+        {
+            Dictionary<string, object> parameters = new Dictionary<string, object>();
+            HashSet<string> settings = new HashSet<string>() { "version" };
+            
+            string output = FileIO.CallRandomizer(parameters, settings);
+
+            MessageBox.Show(output);
+        }
+
+        private void btn_CmdHelp_Click(object sender, RoutedEventArgs e)
+        {
+            Dictionary<string, object> parameters = new Dictionary<string, object>();
+            HashSet<string> settings = new HashSet<string>() { "help" };
+
+            string output = FileIO.CallRandomizer(parameters, settings);
+
+            // Trim off the first part of the help message
+            output = output.Substring(output.IndexOf("Rabi-Ribi"));
+            output = "Note: all dev version exclusive features can only be entered via the Extra Parameters text box. The list of parameters is given below.\n\n" + output;
+
+            MessageBox.Show(output);
         }
 
         private void ChangeInfo(object sender, MouseEventArgs e)

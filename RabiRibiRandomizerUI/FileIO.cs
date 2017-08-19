@@ -25,11 +25,11 @@ namespace RabiRibiRandomizerUI
         /// <returns>
         /// output of the randomizer program.
         /// </returns>
-        public static string CallRandomizer(Dictionary<string, object> parameters, HashSet<string> settings)
+        public static string CallRandomizer(Dictionary<string, object> parameters, HashSet<string> settings, String extraParams="")
         {
             string arguments =
                 string.Join(" ", parameters.Select(pair => $"-{pair.Key} {pair.Value}")) + " " +
-                string.Join(" ", settings.Select(setting => $"--{setting}"));
+                string.Join(" ", settings.Select(setting => $"--{setting}")) + " " + extraParams;
 
             Process p = new Process();
             p.StartInfo.FileName = @"bin\itemrandomizer.exe";
