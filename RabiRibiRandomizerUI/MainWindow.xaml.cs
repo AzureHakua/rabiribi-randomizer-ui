@@ -97,12 +97,38 @@ namespace RabiRibiRandomizerUI
                 }
             }
 
+            if (txt_ExtraParams.Text != "")
+            {
+                string[] extraParams = txt_ExtraParams.Text.Split(' ');
+                for (int i = 0; i < extraParams.Length; i++)
+                {
+                    settings.Add(extraParams[i]);
+                }
+            }
+
             string output = FileIO.CallRandomizer(parameters, settings);
 
             MessageBox.Show(output);
 
             //ConfigData data = FileIO.ReadConfig("config.txt");
             //FileIO.WriteConfig("config2.txt", data);
+        }
+
+        private void Reset_Maps_Click(object sender, RoutedEventArgs e)
+        {
+            Dictionary<string, object> parameters = new Dictionary<string, object>();
+            HashSet<string> settings = new HashSet<string>();
+
+            if (txt_Path.Text != "")
+            {
+                parameters.Add("output_dir", txt_Path.Text);
+            }
+
+            settings.Add("reset");
+
+            string output = FileIO.CallRandomizer(parameters, settings);
+
+            MessageBox.Show(output);
         }
 
         private void btn_Path_Click(object sender, RoutedEventArgs e)
@@ -143,6 +169,10 @@ namespace RabiRibiRandomizerUI
                 case "lbl_ExtraEggs":
                 case "txt_ExtraEggs":
                     Info = "For Egg goals mode. You can specify a number of eggs to keep in the maps on top of the \"Hard to Reach\" eggs.";
+                    break;
+                case "lbl_ExtraParams":
+                case "txt_ExtraParams":
+                    Info = "Send parameters to the Randomizer by hand. Not recommended unless you know what you're doing.";
                     break;
             }
         }
