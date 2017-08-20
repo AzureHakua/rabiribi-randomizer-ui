@@ -16,7 +16,7 @@
             <TextBox x:Name="txt_Seed" HorizontalAlignment="Left" Height="23" Margin="158,81,0,0" VerticalAlignment="Top" Width="86" MouseEnter="ChangeInfo" MouseLeave="RemoveInfo" />
             <CheckBox x:Name="chk_NoWrite" Content="No write" HorizontalAlignment="Left" Margin="10,134,0,0" VerticalAlignment="Top" MouseEnter="ChangeInfo" MouseLeave="RemoveInfo" />
             <CheckBox x:Name="chk_MusicShuffle" Content="Music shuffle" HorizontalAlignment="Left" Margin="10,157,0,0" VerticalAlignment="Top" MouseEnter="ChangeInfo" MouseLeave="RemoveInfo" />
-            <CheckBox x:Name="chk_EggGoalsMode" Content="Egg goals mode" HorizontalAlignment="Left" Margin="10,222,0,0" VerticalAlignment="Top" MouseEnter="ChangeInfo" MouseLeave="RemoveInfo" />
+            <CheckBox x:Name="chk_EggGoalsMode" IsChecked="True" Content="Egg goals mode" HorizontalAlignment="Left" Margin="10,222,0,0" VerticalAlignment="Top" MouseEnter="ChangeInfo" MouseLeave="RemoveInfo" />
             <Label x:Name="lbl_ExtraEggs" Content="Extra eggs" HorizontalAlignment="Left" Margin="10,244,0,0" VerticalAlignment="Top" IsEnabled="{Binding ElementName=chk_EggGoalsMode, Path=IsChecked}" MouseEnter="ChangeInfo" MouseLeave="RemoveInfo" />
             <TextBox x:Name="txt_ExtraEggs" HorizontalAlignment="Left" Height="23" Margin="88,248,0,0" VerticalAlignment="Top" Width="120" IsEnabled="{Binding ElementName=chk_EggGoalsMode, Path=IsChecked}" MouseEnter="ChangeInfo" MouseLeave="RemoveInfo" />
             <CheckBox x:Name="chk_BgShuffle" Visibility="Hidden" Content="Background shuffle" HorizontalAlignment="Left" Margin="10,180,0,0" VerticalAlignment="Top" MouseEnter="ChangeInfo" MouseLeave="RemoveInfo" />
