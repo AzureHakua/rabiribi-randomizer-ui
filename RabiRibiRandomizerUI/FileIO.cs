@@ -28,7 +28,7 @@ namespace RabiRibiRandomizerUI
         public static string CallRandomizer(Dictionary<string, object> parameters, HashSet<string> settings, String extraParams="")
         {
             string arguments =
-                string.Join(" ", parameters.Select(pair => $"-{pair.Key} {pair.Value}")) + " " +
+                string.Join(" ", parameters.Select(pair => $"-{pair.Key} \"{pair.Value}\"")) + " " +
                 string.Join(" ", settings.Select(setting => $"--{setting}")) + " " + extraParams;
 
             Process p = new Process();
