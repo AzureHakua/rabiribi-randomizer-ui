@@ -80,6 +80,11 @@ namespace RabiRibiRandomizerUI
                 settings.Add("shuffle-music");
             }
 
+            if (chk_BgShuffle.IsChecked.HasValue && chk_BgShuffle.IsChecked.Value)
+            {
+                settings.Add("shuffle-backgrounds");
+            }
+
             if (chk_EggGoalsMode.IsChecked.HasValue && chk_EggGoalsMode.IsChecked.Value)
             {
                 settings.Add("egg-goals");
