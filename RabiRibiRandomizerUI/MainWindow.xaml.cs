@@ -54,14 +54,19 @@ namespace RabiRibiRandomizerUI
 
             if (txt_Seed.Text != "")
             {
-                int seed;
-                if (int.TryParse(txt_Seed.Text, out seed))
+                if (txt_Seed.Text.Length > 65535)
                 {
-                    parameters.Add("seed", seed);
+                    MessageBox.Show("Why? Why is your seed over 65535 characters? Please, don't do this. Think of the children.");
+                    return;
+                }
+
+                if (txt_Seed.Text.All(char.IsLetterOrDigit))
+                {
+                    parameters.Add("seed", txt_Seed.Text);
                 }
                 else
                 {
-                    MessageBox.Show("Invalid seed. Seed must be an integer.\nRandom will be used.");
+                    MessageBox.Show("Invalid seed. Seed must be an alphanumeric string.\nRandom will be used.");
                 }
             }
 
@@ -83,6 +88,26 @@ namespace RabiRibiRandomizerUI
             if (chk_BgShuffle.IsChecked.HasValue && chk_BgShuffle.IsChecked.Value)
             {
                 settings.Add("shuffle-backgrounds");
+            }
+
+            if (chk_HideUnreachable.IsChecked.HasValue && chk_HideUnreachable.IsChecked.Value)
+            {
+                settings.Add("hide-unreachable");
+            }
+
+            if (chk_HideDifficulty.IsChecked.HasValue && chk_HideDifficulty.IsChecked.Value)
+            {
+                settings.Add("hide-difficulty");
+            }
+
+            if (chk_NoFixes.IsChecked.HasValue && chk_NoFixes.IsChecked.Value)
+            {
+                settings.Add("no-fixes");
+            }
+
+            if (chk_NoLaggyBackgrounds.IsChecked.HasValue && chk_NoLaggyBackgrounds.IsChecked.Value)
+            {
+                settings.Add("no-laggy-backgrounds");
             }
 
             if (chk_EggGoalsMode.IsChecked.HasValue && chk_EggGoalsMode.IsChecked.Value)
@@ -180,6 +205,21 @@ namespace RabiRibiRandomizerUI
                     break;
                 case "chk_MusicShuffle":
                     Info = "When checked, the Randomizer will also shuffle music tracks used in the game.";
+                    break;
+                case "chk_BgShuffle":
+                    Info = "When checked, the Randomizer will also shuffle room backgrounds used in the game. This can get pretty wild.";
+                    break;
+                case "chk_HideUnreachable":
+                    Info = "When checked, the Randomizer output will not show the unreachable items in the randomized maps.";
+                    break;
+                case "chk_HideDifficulty":
+                    Info = "When checked, the Randomizer output will not show the difficulty of the seed.";
+                    break;
+                case "chk_NoFixes":
+                    Info = "When checked, the Randomizer will not perform specific map fixes.";
+                    break;
+                case "chk_NoLaggyBackgrounds":
+                    Info = "When checked, the Randomizer will remove laggy backgrounds from the randomized maps.";
                     break;
                 case "chk_EggGoalsMode":
                     Info = "When checked, the Randomizer will replace all \"Hard to Reach\" items with eggs, and remove all other eggs. The goal is to collect X number of eggs in this case.";
