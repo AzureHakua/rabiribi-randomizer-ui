@@ -37,6 +37,8 @@ namespace RabiRibiRandomizerUI
         {
             InitializeComponent();
             this.DataContext = this;
+
+            CheckForUpdates();
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
@@ -73,6 +75,11 @@ namespace RabiRibiRandomizerUI
             if (txt_Path.Text != "")
             {
                 parameters.Add("output_dir", txt_Path.Text);
+            }
+
+            if (txt_Config.Text != "")
+            {
+                parameters.Add("config_file", txt_Config.Text);
             }
 
             if (chk_NoWrite.IsChecked.HasValue && chk_NoWrite.IsChecked.Value)
@@ -135,6 +142,18 @@ namespace RabiRibiRandomizerUI
             //FileIO.WriteConfig("config2.txt", data);
         }
 
+        private void CheckForUpdates()
+        {
+            Dictionary<string, object> parameters = new Dictionary<string, object>();
+            HashSet<string> settings = new HashSet<string>();
+
+            settings.Add("check-for-updates");
+
+            string output = FileIO.CallRandomizer(parameters, settings);
+
+            MessageBox.Show(output);
+        }
+
         private void Reset_Maps_Click(object sender, RoutedEventArgs e)
         {
             Dictionary<string, object> parameters = new Dictionary<string, object>();
@@ -150,6 +169,40 @@ namespace RabiRibiRandomizerUI
             MessageBox.Show(output);
         }
 
+        private void Hash_Click(object sender, RoutedEventArgs e)
+        {
+            Dictionary<string, object> parameters = new Dictionary<string, object>();
+            HashSet<string> settings = new HashSet<string>() { "hash" };
+
+            if (txt_Path.Text != "")
+            {
+                parameters.Add("output_dir", txt_Path.Text);
+            }
+
+            string output = FileIO.CallRandomizer(parameters, settings);
+
+            MessageBox.Show(output);
+        }
+
+        private void btn_RandomSeed_Click(object sender, RoutedEventArgs e)
+        {
+            char[] values = new char[]
+            {
+                'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z',
+                'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z',
+                '0', '1', '2', '3', '4', '5', '6', '7', '8', '9'
+            };
+
+            Random r = new Random();
+            string seed = "";
+            for (int i = 0; i < 16; i++)
+            {
+                seed += values[r.Next(values.Length)];
+            }
+
+            txt_Seed.Text = seed;
+        }
+
         private void btn_Path_Click(object sender, RoutedEventArgs e)
         {
             using (CommonOpenFileDialog dialog = new CommonOpenFileDialog())
@@ -158,6 +211,17 @@ namespace RabiRibiRandomizerUI
                 if (dialog.ShowDialog() == CommonFileDialogResult.Ok)
                 {
                     txt_Path.Text = dialog.FileName;
+                }
+            }
+        }
+
+        private void btn_Config_Click(object sender, RoutedEventArgs e)
+        {
+            using (CommonOpenFileDialog dialog = new CommonOpenFileDialog())
+            {
+                if (dialog.ShowDialog() == CommonFileDialogResult.Ok)
+                {
+                    txt_Config.Text = dialog.FileName;
                 }
             }
         }
