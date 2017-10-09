@@ -38,7 +38,7 @@ namespace RabiRibiRandomizerUI
             InitializeComponent();
             this.DataContext = this;
 
-            //CheckForUpdates();
+            CheckForUpdates();
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
