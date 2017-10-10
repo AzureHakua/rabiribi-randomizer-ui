@@ -117,6 +117,16 @@ namespace RabiRibiRandomizerUI
                 settings.Add("no-laggy-backgrounds");
             }
 
+            if (chk_NoDifficultBackgrounds.IsChecked.HasValue && chk_NoDifficultBackgrounds.IsChecked.Value)
+            {
+                settings.Add("no-difficult-backgrounds");
+            }
+
+            if (chk_SuperAttackMode.IsChecked.HasValue && chk_SuperAttackMode.IsChecked.Value)
+            {
+                settings.Add("super-attack-mode");
+            }
+
             if (chk_EggGoalsMode.IsChecked.HasValue && chk_EggGoalsMode.IsChecked.Value)
             {
                 settings.Add("egg-goals");
@@ -284,6 +294,12 @@ namespace RabiRibiRandomizerUI
                     break;
                 case "chk_NoLaggyBackgrounds":
                     Info = "When checked, the Randomizer will remove laggy backgrounds from the randomized maps.";
+                    break;
+                case "chk_NoDifficultBackgrounds":
+                    Info = "When checked, the Randomizer will remove backgrounds that are considered \"difficult\" (backgrounds that obscure vision and such) from the randomized maps.";
+                    break;
+                case "chk_SuperAttackMode":
+                    Info = "When checked, the Randomizer will give Erina 20 attack ups from the start. These attack ups are extra, and do not change any of the attack ups randomized in the game.";
                     break;
                 case "chk_EggGoalsMode":
                     Info = "When checked, the Randomizer will replace all \"Hard to Reach\" items with eggs, and remove all other eggs. The goal is to collect X number of eggs in this case.";

@@ -5,10 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:RabiRibiRandomizerUI"
         mc:Ignorable="d"
-        Title="Bunny Randomizer" Height="557.856" Width="420" Background="#FFF0F0F0" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" Icon="chocolate_2.ico">
+        Title="Bunny Randomizer" Height="579.877" Width="420" Background="#FFF0F0F0" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" Icon="chocolate_2.ico">
     <Grid>
         <Button x:Name="btn_Randomize" Click="Generate_Button_Click" Margin="0,0,10,10" VerticalAlignment="Bottom" HorizontalAlignment="Right" Height="50" Width="120">Randomize!</Button>
-        <Grid Name="grd_Params" HorizontalAlignment="Left" Height="445" Margin="10,10,0,0" VerticalAlignment="Top" Width="254" Background="#FFBDBDBD">
+        <Grid Name="grd_Params" HorizontalAlignment="Left" Height="467" Margin="10,10,0,0" VerticalAlignment="Top" Width="254" Background="#FFBDBDBD">
             <TextBox x:Name="txt_Path" HorizontalAlignment="Right" Height="23" Margin="0,42,10,0" VerticalAlignment="Top" Width="100" MouseEnter="ChangeInfo" MouseLeave="RemoveInfo" />
             <Button x:Name="btn_Path" Content="Specify output path" HorizontalAlignment="Left" Margin="10,42,0,0" VerticalAlignment="Top" Width="129" Height="23" Click="btn_Path_Click" MouseEnter="ChangeInfo" MouseLeave="RemoveInfo" />
             <Label x:Name="lbl_Params" Content="Parameters" HorizontalAlignment="Center" Margin="48,0" VerticalAlignment="Top" FontSize="16" FontWeight="Bold"/>
@@ -16,9 +16,9 @@
             <TextBox x:Name="txt_Seed" HorizontalAlignment="Left" Height="23" Margin="158,106,0,0" VerticalAlignment="Top" Width="86" MouseEnter="ChangeInfo" MouseLeave="RemoveInfo" />
             <CheckBox x:Name="chk_NoWrite" Content="No write" HorizontalAlignment="Left" Margin="10,157,0,0" VerticalAlignment="Top" MouseEnter="ChangeInfo" MouseLeave="RemoveInfo" />
             <CheckBox x:Name="chk_MusicShuffle" Content="Music shuffle" HorizontalAlignment="Left" Margin="10,180,0,0" VerticalAlignment="Top" MouseEnter="ChangeInfo" MouseLeave="RemoveInfo" />
-            <CheckBox x:Name="chk_EggGoalsMode" IsChecked="True" Content="Egg goals mode" HorizontalAlignment="Left" Margin="10,362,0,0" VerticalAlignment="Top" MouseEnter="ChangeInfo" MouseLeave="RemoveInfo" />
-            <Label x:Name="lbl_ExtraEggs" Content="Extra eggs" HorizontalAlignment="Left" Margin="10,384,0,0" VerticalAlignment="Top" IsEnabled="{Binding ElementName=chk_EggGoalsMode, Path=IsChecked}" MouseEnter="ChangeInfo" MouseLeave="RemoveInfo" />
-            <TextBox x:Name="txt_ExtraEggs" HorizontalAlignment="Left" Height="23" Margin="88,388,0,0" VerticalAlignment="Top" Width="120" IsEnabled="{Binding ElementName=chk_EggGoalsMode, Path=IsChecked}" MouseEnter="ChangeInfo" MouseLeave="RemoveInfo" />
+            <CheckBox x:Name="chk_EggGoalsMode" IsChecked="True" Content="Egg goals mode" HorizontalAlignment="Left" Margin="10,0,0,61" VerticalAlignment="Bottom" MouseEnter="ChangeInfo" MouseLeave="RemoveInfo" />
+            <Label x:Name="lbl_ExtraEggs" Content="Extra eggs" HorizontalAlignment="Left" Margin="10,0,0,30" VerticalAlignment="Bottom" IsEnabled="{Binding ElementName=chk_EggGoalsMode, Path=IsChecked}" MouseEnter="ChangeInfo" MouseLeave="RemoveInfo" />
+            <TextBox x:Name="txt_ExtraEggs" HorizontalAlignment="Left" Height="23" Margin="88,0,0,30" VerticalAlignment="Bottom" Width="120" IsEnabled="{Binding ElementName=chk_EggGoalsMode, Path=IsChecked}" MouseEnter="ChangeInfo" MouseLeave="RemoveInfo" />
             <CheckBox x:Name="chk_BgShuffle" Content="Background shuffle" HorizontalAlignment="Left" Margin="10,203,0,0" VerticalAlignment="Top" MouseEnter="ChangeInfo" MouseLeave="RemoveInfo" />
             <CheckBox x:Name="chk_HideUnreachable" Content="Hide unreachable" HorizontalAlignment="Left" Margin="10,226,0,0" VerticalAlignment="Top" MouseEnter="ChangeInfo" MouseLeave="RemoveInfo" />
             <CheckBox x:Name="chk_HideDifficulty" Content="Hide difficulty" HorizontalAlignment="Left" Margin="10,249,0,0" VerticalAlignment="Top" MouseEnter="ChangeInfo" MouseLeave="RemoveInfo" />
@@ -27,6 +27,8 @@
             <Button Click="btn_Version_Click" Margin="0,0,0,0" VerticalAlignment="Bottom" HorizontalAlignment="Right" Height="20" Width="60" Content="version"/>
             <Button x:Name="btn_Config" Content="Specify config path" HorizontalAlignment="Left" Margin="10,74,0,0" VerticalAlignment="Top" Width="129" Height="23" Click="btn_Config_Click" MouseEnter="ChangeInfo" MouseLeave="RemoveInfo" />
             <TextBox x:Name="txt_Config" HorizontalAlignment="Right" Height="23" Margin="0,74,10,0" VerticalAlignment="Top" Width="100" MouseEnter="ChangeInfo" MouseLeave="RemoveInfo" />
+            <CheckBox x:Name="chk_NoDifficultBackgrounds" Content="No difficult backgrounds" HorizontalAlignment="Left" Margin="10,318,0,0" VerticalAlignment="Top" MouseEnter="ChangeInfo" MouseLeave="RemoveInfo" />
+            <CheckBox x:Name="chk_SuperAttackMode" Content="Super attack mode" HorizontalAlignment="Left" Margin="10,341,0,0" VerticalAlignment="Top" MouseEnter="ChangeInfo" MouseLeave="RemoveInfo" />
         </Grid>
         <TextBlock x:Name="txt_Info" HorizontalAlignment="Left" Margin="269,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="135" Height="192" Text="{Binding Path=Info}"/>
         <TextBox x:Name="txt_ExtraParams" HorizontalAlignment="Left" Height="30" Margin="10,0,0,10" TextWrapping="Wrap" VerticalAlignment="Bottom" Width="224" MouseEnter="ChangeInfo" MouseLeave="RemoveInfo" />
