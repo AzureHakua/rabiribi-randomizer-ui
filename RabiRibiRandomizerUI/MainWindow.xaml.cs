@@ -22,6 +22,12 @@ namespace RabiRibiRandomizerUI
     /// </summary>
     public partial class MainWindow : INotifyPropertyChanged
     {
+        private string[] DevFlags = new string[]
+        {
+            "chk_NoDifficultBackgrounds",
+            "chk_SuperAttackMode",
+        };
+
         private string m_Info;
         public string Info
         {
@@ -39,6 +45,15 @@ namespace RabiRibiRandomizerUI
             this.DataContext = this;
 
             CheckForUpdates();
+            string branch = CheckForBranch();
+            if (branch.StartsWith("M"))
+            {
+                foreach (string devFlag in DevFlags)
+                {
+                    FrameworkElement devElement = (FrameworkElement)FindName(devFlag);
+                    devElement.Visibility = Visibility.Hidden;
+                }
+            }
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
@@ -146,7 +161,7 @@ namespace RabiRibiRandomizerUI
 
             string output = FileIO.CallRandomizer(parameters, settings, txt_ExtraParams.Text);
 
-            MessageBox.Show(output);
+            txt_Output.Text = output;
 
             //ConfigData data = FileIO.ReadConfig("config.txt");
             //FileIO.WriteConfig("config2.txt", data);
@@ -164,6 +179,18 @@ namespace RabiRibiRandomizerUI
             MessageBox.Show(output);
         }
 
+        private string CheckForBranch()
+        {
+            Dictionary<string, object> parameters = new Dictionary<string, object>();
+            HashSet<string> settings = new HashSet<string>();
+
+            settings.Add("check-branch");
+
+            string output = FileIO.CallRandomizer(parameters, settings);
+
+            return output;
+        }
+
         private void Reset_Maps_Click(object sender, RoutedEventArgs e)
         {
             Dictionary<string, object> parameters = new Dictionary<string, object>();
@@ -176,7 +203,7 @@ namespace RabiRibiRandomizerUI
             
             string output = FileIO.CallRandomizer(parameters, settings);
 
-            MessageBox.Show(output);
+            txt_Output.Text = output;
         }
 
         private void Hash_Click(object sender, RoutedEventArgs e)
@@ -191,7 +218,7 @@ namespace RabiRibiRandomizerUI
 
             string output = FileIO.CallRandomizer(parameters, settings);
 
-            MessageBox.Show(output);
+            txt_Output.Text = output;
         }
 
         private void btn_RandomSeed_Click(object sender, RoutedEventArgs e)
@@ -257,7 +284,7 @@ namespace RabiRibiRandomizerUI
             output = output.Substring(output.IndexOf("Rabi-Ribi"));
             output = "Note: all dev version exclusive features can only be entered via the Extra Parameters text box. The list of parameters is given below.\n\n" + output;
 
-            MessageBox.Show(output);
+            txt_Output.Text = output;
         }
 
         private void ChangeInfo(object sender, MouseEventArgs e)

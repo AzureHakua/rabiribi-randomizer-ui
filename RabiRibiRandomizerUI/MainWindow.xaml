@@ -5,9 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:RabiRibiRandomizerUI"
         mc:Ignorable="d"
-        Title="Bunny Randomizer" Height="579.877" Width="420" Background="#FFF0F0F0" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" Icon="chocolate_2.ico">
+        Title="Bunny Randomizer" Height="579.877" Width="703" Background="#FFF0F0F0" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" Icon="chocolate_2.ico">
     <Grid>
-        <Button x:Name="btn_Randomize" Click="Generate_Button_Click" Margin="0,0,10,10" VerticalAlignment="Bottom" HorizontalAlignment="Right" Height="50" Width="120">Randomize!</Button>
+        <Button x:Name="btn_Randomize" Click="Generate_Button_Click" Margin="284,0,0,10" VerticalAlignment="Bottom" HorizontalAlignment="Left" Height="50" Width="120">Randomize!</Button>
         <Grid Name="grd_Params" HorizontalAlignment="Left" Height="467" Margin="10,10,0,0" VerticalAlignment="Top" Width="254" Background="#FFBDBDBD">
             <Label x:Name="lbl_Params" Content="Parameters" HorizontalAlignment="Center" Margin="48,0" VerticalAlignment="Top" FontSize="16" FontWeight="Bold"/>
             <TextBox x:Name="txt_Path" HorizontalAlignment="Right" Height="23" Margin="0,42,10,0" VerticalAlignment="Top" Width="100" MouseEnter="ChangeInfo" MouseLeave="RemoveInfo" />
@@ -31,11 +31,13 @@
             <Button x:Name="btn_Version" Click="btn_Version_Click" Margin="0,0,0,0" VerticalAlignment="Bottom" HorizontalAlignment="Right" Height="20" Width="60" Content="version"/>
         </Grid>
         <TextBlock x:Name="txt_Info" HorizontalAlignment="Left" Margin="269,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="135" Height="192" Text="{Binding Path=Info}"/>
-        <Label x:Name="lbl_ExtraParams" Content="Extra Parameters" HorizontalAlignment="Center" Margin="71,0,171,38" VerticalAlignment="Bottom" FontWeight="Bold" FontSize="16" Width="172" MouseEnter="ChangeInfo" MouseLeave="RemoveInfo" />
+        <Label x:Name="lbl_ExtraParams" Content="Extra Parameters" HorizontalAlignment="Left" Margin="71,0,171,38" VerticalAlignment="Bottom" FontWeight="Bold" FontSize="16" Width="172" MouseEnter="ChangeInfo" MouseLeave="RemoveInfo" />
         <TextBox x:Name="txt_ExtraParams" HorizontalAlignment="Left" Height="30" Margin="10,0,0,10" TextWrapping="Wrap" VerticalAlignment="Bottom" Width="224" MouseEnter="ChangeInfo" MouseLeave="RemoveInfo" />
-        <Button x:Name="btn_CmdHelp" Click="btn_CmdHelp_Click" Margin="0,0,140,10" VerticalAlignment="Bottom" HorizontalAlignment="Right" Height="30" Width="30" Content="?"/>
-        <Button x:Name="btn_Hash" Click="Hash_Click" Margin="0,0,10,187" VerticalAlignment="Bottom" HorizontalAlignment="Right" Height="25" Width="120" Content="Check Hash"/>
-        <Button x:Name="btn_Reset" Click="Reset_Maps_Click" Margin="0,0,10,128" VerticalAlignment="Bottom" HorizontalAlignment="Right" Height="50" Width="120" Content="Reset Maps"/>
-        <Button x:Name="btn_RandomSeed" Click="btn_RandomSeed_Click" Margin="0,0,10,68" VerticalAlignment="Bottom" HorizontalAlignment="Right" Height="50" Width="120" Content="Get random seed"/>
+        <Button x:Name="btn_CmdHelp" Click="btn_CmdHelp_Click" Margin="243,0,0,10" VerticalAlignment="Bottom" HorizontalAlignment="Left" Height="30" Width="30" Content="?"/>
+        <Button x:Name="btn_Hash" Click="Hash_Click" Margin="284,0,0,187" VerticalAlignment="Bottom" HorizontalAlignment="Left" Height="25" Width="120" Content="Check Hash"/>
+        <Button x:Name="btn_Reset" Click="Reset_Maps_Click" Margin="284,0,0,128" VerticalAlignment="Bottom" HorizontalAlignment="Left" Height="50" Width="120" Content="Reset Maps"/>
+        <Button x:Name="btn_RandomSeed" Click="btn_RandomSeed_Click" Margin="284,0,0,68" VerticalAlignment="Bottom" HorizontalAlignment="Left" Height="50" Width="120" Content="Get random seed"/>
+        <Label x:Name="lbl_Output" Content="Output" HorizontalAlignment="Left" Margin="517,0,0,506" VerticalAlignment="Bottom" FontWeight="Bold" FontSize="16" MouseEnter="ChangeInfo" MouseLeave="RemoveInfo" />
+        <TextBox x:Name="txt_Output" HorizontalAlignment="Left" Height="495" Margin="414,37,0,0" VerticalAlignment="Top" Width="263" VerticalScrollBarVisibility="Visible" IsReadOnly="True" HorizontalScrollBarVisibility="Visible"/>
     </Grid>
 </Window>

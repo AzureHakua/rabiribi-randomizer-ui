@@ -42,9 +42,10 @@ namespace RabiRibiRandomizerUI
             string output = p.StandardOutput.ReadToEnd();
             p.WaitForExit();
 
-            if (p.ExitCode == 1)
+            if (p.ExitCode != 0)
             {
-                output = p.StandardError.ReadToEnd();
+                output = "An unexpected error has occured.\r\n\r\nOutput:\r\n";
+                output += p.StandardError.ReadToEnd();
             }
 
             return output;
