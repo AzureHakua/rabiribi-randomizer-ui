@@ -97,52 +97,52 @@ namespace RabiRibiRandomizerUI
                 parameters.Add("config_file", txt_Config.Text);
             }
 
-            if (chk_NoWrite.IsChecked.HasValue && chk_NoWrite.IsChecked.Value)
+            if (chk_NoWrite.IsEnabled && chk_NoWrite.IsChecked.HasValue && chk_NoWrite.IsChecked.Value)
             {
                 settings.Add("no-write");
             }
 
-            if (chk_MusicShuffle.IsChecked.HasValue && chk_MusicShuffle.IsChecked.Value)
+            if (chk_MusicShuffle.IsEnabled && chk_MusicShuffle.IsChecked.HasValue && chk_MusicShuffle.IsChecked.Value)
             {
                 settings.Add("shuffle-music");
             }
 
-            if (chk_BgShuffle.IsChecked.HasValue && chk_BgShuffle.IsChecked.Value)
+            if (chk_BgShuffle.IsEnabled && chk_BgShuffle.IsChecked.HasValue && chk_BgShuffle.IsChecked.Value)
             {
                 settings.Add("shuffle-backgrounds");
             }
 
-            if (chk_HideUnreachable.IsChecked.HasValue && chk_HideUnreachable.IsChecked.Value)
+            if (chk_HideUnreachable.IsEnabled && chk_HideUnreachable.IsChecked.HasValue && chk_HideUnreachable.IsChecked.Value)
             {
                 settings.Add("hide-unreachable");
             }
 
-            if (chk_HideDifficulty.IsChecked.HasValue && chk_HideDifficulty.IsChecked.Value)
+            if (chk_HideDifficulty.IsEnabled && chk_HideDifficulty.IsChecked.HasValue && chk_HideDifficulty.IsChecked.Value)
             {
                 settings.Add("hide-difficulty");
             }
 
-            if (chk_NoFixes.IsChecked.HasValue && chk_NoFixes.IsChecked.Value)
+            if (chk_NoFixes.IsEnabled && chk_NoFixes.IsChecked.HasValue && chk_NoFixes.IsChecked.Value)
             {
                 settings.Add("no-fixes");
             }
 
-            if (chk_NoLaggyBackgrounds.IsChecked.HasValue && chk_NoLaggyBackgrounds.IsChecked.Value)
+            if (chk_NoLaggyBackgrounds.IsEnabled && chk_NoLaggyBackgrounds.IsChecked.HasValue && chk_NoLaggyBackgrounds.IsChecked.Value)
             {
                 settings.Add("no-laggy-backgrounds");
             }
 
-            if (chk_NoDifficultBackgrounds.IsChecked.HasValue && chk_NoDifficultBackgrounds.IsChecked.Value)
+            if (chk_NoDifficultBackgrounds.IsEnabled && chk_NoDifficultBackgrounds.IsChecked.HasValue && chk_NoDifficultBackgrounds.IsChecked.Value)
             {
                 settings.Add("no-difficult-backgrounds");
             }
 
-            if (chk_SuperAttackMode.IsChecked.HasValue && chk_SuperAttackMode.IsChecked.Value)
+            if (chk_SuperAttackMode.IsEnabled && chk_SuperAttackMode.IsChecked.HasValue && chk_SuperAttackMode.IsChecked.Value)
             {
                 settings.Add("super-attack-mode");
             }
 
-            if (chk_EggGoalsMode.IsChecked.HasValue && chk_EggGoalsMode.IsChecked.Value)
+            if (chk_EggGoalsMode.IsEnabled && chk_EggGoalsMode.IsChecked.HasValue && chk_EggGoalsMode.IsChecked.Value)
             {
                 settings.Add("egg-goals");
                 if (txt_ExtraEggs.Text != "")
