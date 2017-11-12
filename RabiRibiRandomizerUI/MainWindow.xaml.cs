@@ -24,8 +24,6 @@ namespace RabiRibiRandomizerUI
     {
         private string[] DevFlags = new string[]
         {
-            "chk_NoDifficultBackgrounds",
-            "chk_SuperAttackMode",
         };
 
         private string m_Info;
