@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:RabiRibiRandomizerUI"
         mc:Ignorable="d"
-        Title="Bunny Randomizer" Height="579.877" Width="703" Background="#FFF0F0F0" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" Icon="chocolate_2.ico">
+        Title="Bunny Randomizer" Height="579.877" Width="703" Background="#FFF0F0F0" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" Icon="chocolate_2.ico"
+        Closing="Window_Closing" Loaded="Window_Loaded">
     <Grid>
         <Button x:Name="btn_Randomize" Click="Generate_Button_Click" Margin="284,0,0,10" VerticalAlignment="Bottom" HorizontalAlignment="Left" Height="50" Width="120">Randomize!</Button>
         <Grid Name="grd_Params" HorizontalAlignment="Left" Height="467" Margin="10,10,0,0" VerticalAlignment="Top" Width="254" Background="#FFBDBDBD">
@@ -13,7 +14,7 @@
             <TextBox x:Name="txt_Path" HorizontalAlignment="Right" Height="23" Margin="0,42,10,0" VerticalAlignment="Top" Width="100" MouseEnter="ChangeInfo" MouseLeave="RemoveInfo" />
             <Button x:Name="btn_Path" Content="Specify output path" HorizontalAlignment="Left" Margin="10,42,0,0" VerticalAlignment="Top" Width="129" Height="23" Click="btn_Path_Click" MouseEnter="ChangeInfo" MouseLeave="RemoveInfo" />
             <TextBox x:Name="txt_Config" HorizontalAlignment="Right" Height="23" Margin="0,74,10,0" VerticalAlignment="Top" Width="100" MouseEnter="ChangeInfo" MouseLeave="RemoveInfo" />
-            <Button x:Name="btn_Config" Content="Specify config path" HorizontalAlignment="Left" Margin="10,74,0,0" VerticalAlignment="Top" Width="129" Height="23" Click="btn_Config_Click" MouseEnter="ChangeInfo" MouseLeave="RemoveInfo" />
+            <Button x:Name="btn_Config" Content="Specify config file" HorizontalAlignment="Left" Margin="10,74,0,0" VerticalAlignment="Top" Width="129" Height="23" Click="btn_Config_Click" MouseEnter="ChangeInfo" MouseLeave="RemoveInfo" />
             <Label x:Name="lbl_Seed" Content="Seed (empty for random)" HorizontalAlignment="Left" Margin="10,104,0,0" VerticalAlignment="Top" MouseEnter="ChangeInfo" MouseLeave="RemoveInfo" />
             <TextBox x:Name="txt_Seed" HorizontalAlignment="Left" Height="23" Margin="158,106,0,0" VerticalAlignment="Top" Width="86" MouseEnter="ChangeInfo" MouseLeave="RemoveInfo" />
             <CheckBox x:Name="chk_NoWrite" Content="No write" HorizontalAlignment="Left" Margin="10,157,0,0" VerticalAlignment="Top" MouseEnter="ChangeInfo" MouseLeave="RemoveInfo" />

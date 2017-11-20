@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -343,6 +344,116 @@ namespace RabiRibiRandomizerUI
         private void RemoveInfo(object sender, MouseEventArgs e)
         {
             Info = "";
+        }
+
+        //
+        // Profile
+        //
+
+        private void Window_Closing(object sender, CancelEventArgs e)
+        {
+            StreamWriter writer = new StreamWriter("profile.ini");
+            
+            if (txt_Path.Text != "")
+            {
+                writer.WriteLine("output_path:" + txt_Path.Text);
+            }
+            if (txt_Config.Text != "")
+            {
+                writer.WriteLine("config_file:" + txt_Config.Text);
+            }
+
+            writer.WriteLine("music_shuffle:" + chk_MusicShuffle.IsChecked);
+            writer.WriteLine("bg_shuffle:" + chk_BgShuffle.IsChecked);
+            writer.WriteLine("hide_unreachable:" + chk_HideUnreachable.IsChecked);
+            writer.WriteLine("hide_difficulty:" + chk_HideDifficulty.IsChecked);
+            writer.WriteLine("no_fixes:" + chk_NoFixes.IsChecked);
+            writer.WriteLine("no_laggy_bg:" + chk_NoLaggyBackgrounds.IsChecked);
+            writer.WriteLine("no_difficult_bg:" + chk_NoDifficultBackgrounds.IsChecked);
+            writer.WriteLine("super_attack:" + chk_SuperAttackMode.IsChecked);
+
+            writer.WriteLine("egg_mode:" + chk_EggGoalsMode.IsChecked);
+            if ((bool)chk_EggGoalsMode.IsChecked && txt_ExtraEggs.Text != "")
+            {
+                writer.WriteLine("extra_eggs:" + txt_ExtraEggs.Text);
+            }
+
+            if (txt_ExtraParams.Text != "")
+            {
+                writer.WriteLine("extra_params:" + txt_ExtraParams.Text);
+            }
+
+            writer.Close();
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            if (File.Exists("profile.ini"))
+            {
+                StreamReader reader = new StreamReader("profile.ini");
+
+                while (!reader.EndOfStream)
+                {
+                    string line = reader.ReadLine();
+                    int index = line.IndexOf(':');
+                    switch (line.Substring(0, index))
+                    {
+                        case "output_path":
+                            txt_Path.Text = line.Substring(index + 1);
+                            break;
+
+                        case "config_file":
+                            txt_Config.Text = line.Substring(index + 1);
+                            break;
+
+                        case "music_shuffle":
+                            chk_MusicShuffle.IsChecked = bool.Parse(line.Substring(index + 1));
+                            break;
+
+                        case "bg_shuffle":
+                            chk_BgShuffle.IsChecked = bool.Parse(line.Substring(index + 1));
+                            break;
+
+                        case "hide_unreachable":
+                            chk_HideUnreachable.IsChecked = bool.Parse(line.Substring(index + 1));
+                            break;
+
+                        case "hide_difficulty":
+                            chk_HideDifficulty.IsChecked = bool.Parse(line.Substring(index + 1));
+                            break;
+
+                        case "no_fixes":
+                            chk_NoFixes.IsChecked = bool.Parse(line.Substring(index + 1));
+                            break;
+
+                        case "no_laggy_bg":
+                            chk_NoLaggyBackgrounds.IsChecked = bool.Parse(line.Substring(index + 1));
+                            break;
+
+                        case "no_difficult_bg":
+                            chk_NoDifficultBackgrounds.IsChecked = bool.Parse(line.Substring(index + 1));
+                            break;
+
+                        case "super_attack":
+                            chk_SuperAttackMode.IsChecked = bool.Parse(line.Substring(index + 1));
+                            break;
+
+                        case "egg_mode":
+                            chk_EggGoalsMode.IsChecked = bool.Parse(line.Substring(index + 1));
+                            break;
+
+                        case "extra_eggs":
+                            txt_ExtraEggs.Text = line.Substring(index + 1);
+                            break;
+
+                        case "extra_params":
+                            txt_ExtraParams.Text = line.Substring(index + 1);
+                            break;
+                    }
+                }
+
+                reader.Close();
+            }
         }
     }
 }
