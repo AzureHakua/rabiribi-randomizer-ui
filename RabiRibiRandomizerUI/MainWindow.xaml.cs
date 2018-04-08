@@ -245,9 +245,13 @@ namespace RabiRibiRandomizerUI
             Dictionary<string, object> parameters = new Dictionary<string, object>();
             HashSet<string> settings = new HashSet<string>() { "reset" };
 
+            if (txt_Source.Text != "")
+            {
+                parameters.Add("source-dir", txt_Source.Text);
+            }
             if (txt_Path.Text != "")
             {
-                parameters.Add("output_dir", txt_Path.Text);
+                parameters.Add("output-dir", txt_Path.Text);
             }
             
             string output = FileIO.CallRandomizer(parameters, settings);
@@ -262,7 +266,7 @@ namespace RabiRibiRandomizerUI
 
             if (txt_Path.Text != "")
             {
-                parameters.Add("output_dir", txt_Path.Text);
+                parameters.Add("output-dir", txt_Path.Text);
             }
 
             string output = FileIO.CallRandomizer(parameters, settings);
