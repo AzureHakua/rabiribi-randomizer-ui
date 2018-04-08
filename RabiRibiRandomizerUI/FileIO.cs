@@ -32,7 +32,7 @@ namespace RabiRibiRandomizerUI
                 string.Join(" ", settings.Select(setting => $"--{setting}")) + " " + extraParams;
 
             Process p = new Process();
-            p.StartInfo.FileName = @"bin\itemrandomizer.exe";
+            p.StartInfo.FileName = @"bin\randomizer.exe";
             p.StartInfo.Arguments = arguments;
             p.StartInfo.UseShellExecute = false;
             p.StartInfo.RedirectStandardOutput = true;
