@@ -618,6 +618,10 @@ namespace RabiRibiRandomizerUI
                             txt_ConstraintChanges.Text = line.Substring(index + 1);
                             break;
 
+                        case "open_mode":
+                            chk_OpenMode.IsChecked = bool.Parse(line.Substring(index + 1));
+                            break;
+
                         case "super_attack":
                             chk_SuperAttackMode.IsChecked = bool.Parse(line.Substring(index + 1));
                             break;
