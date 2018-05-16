@@ -2,9 +2,11 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -23,9 +25,22 @@ namespace RabiRibiRandomizerUI
     /// </summary>
     public partial class MainWindow : INotifyPropertyChanged
     {
+        private SynchronizationContext SyncContext;
+
         private string[] DevFlags = new string[]
         {
         };
+
+        private bool m_RandomizerAvailable;
+        public bool RandomizerAvailable
+        {
+            get { return m_RandomizerAvailable; }
+            set
+            {
+                m_RandomizerAvailable = value;
+                RaisePropertyChanged("RandomizerAvailable");
+            }
+        }
 
         private string m_Info;
         public string Info
@@ -42,6 +57,7 @@ namespace RabiRibiRandomizerUI
         {
             InitializeComponent();
             this.DataContext = this;
+            this.SyncContext = SynchronizationContext.Current;
 
             CheckForUpdates();
             string branch = CheckForBranch();
@@ -53,6 +69,8 @@ namespace RabiRibiRandomizerUI
                     devElement.Visibility = Visibility.Hidden;
                 }
             }
+
+            RandomizerAvailable = true;
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
@@ -208,12 +226,20 @@ namespace RabiRibiRandomizerUI
                 }
             }
 
-            string output = FileIO.CallRandomizer(parameters, settings, txt_ExtraParams.Text);
+            RandomizerAvailable = false;
+            txt_Output.Text = "";
+            FileIO.CallRandomizerAsync(parameters, settings, RandomizerOutputHandler, RandomizerExitHandler, txt_ExtraParams.Text);
+        }
 
-            txt_Output.Text = output;
+        private void RandomizerOutputHandler(string output)
+        {
+            SyncContext.Post(_ => txt_Output.AppendText(output + Environment.NewLine), null);
+        }
 
-            //ConfigData data = FileIO.ReadConfig("config.txt");
-            //FileIO.WriteConfig("config2.txt", data);
+        private void RandomizerExitHandler(object sender)
+        {
+            (sender as Process).Close();
+            RandomizerAvailable = true;
         }
 
         private void CheckForUpdates()

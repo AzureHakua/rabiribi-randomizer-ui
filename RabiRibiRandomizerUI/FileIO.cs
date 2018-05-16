@@ -51,6 +51,31 @@ namespace RabiRibiRandomizerUI
             return output;
         }
 
+        public static void CallRandomizerAsync(Dictionary<string, object> parameters, HashSet<string> settings, Action<string> outputHandler, Action<object> exitHandler, String extraParams = "")
+        {
+            string arguments =
+                string.Join(" ", parameters.Select(pair => $"-{pair.Key} \"{pair.Value}\"")) + " " +
+                string.Join(" ", settings.Select(setting => $"--{setting}")) + " " + extraParams;
+
+            Process p = new Process();
+            p.StartInfo.FileName = @"bin\randomizer.exe";
+            p.StartInfo.Arguments = arguments;
+            p.StartInfo.UseShellExecute = false;
+            p.StartInfo.RedirectStandardOutput = true;
+            p.StartInfo.RedirectStandardError = true;
+
+            p.EnableRaisingEvents = true;
+
+            p.OutputDataReceived += (sender, args) => outputHandler(args.Data);
+            p.ErrorDataReceived += (sender, args) => outputHandler(args.Data);
+            p.Exited += (sender, args) => exitHandler(sender);
+
+            p.Start();
+
+            p.BeginOutputReadLine();
+            p.BeginErrorReadLine();
+        }
+
         /// <summary>
         /// Reads a config file into a ConfigData object.
         /// </summary>
