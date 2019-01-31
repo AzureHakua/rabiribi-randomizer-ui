@@ -198,7 +198,10 @@ namespace RabiRibiRandomizerUI
     /// </summary>
     public class ConfigData
     {
+        public string knowledge;
+        public string trick_difficulty;
         public Dictionary<string, bool> settings;
+        public string[] additional_items;
         public string[] to_shuffle;
         public string[] must_be_reachable;
     }

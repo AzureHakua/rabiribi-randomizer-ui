@@ -383,9 +383,15 @@ namespace RabiRibiRandomizerUI
 
             // Trim off the first part of the help message
             output = output.Substring(output.IndexOf("Rabi-Ribi"));
-            output = "Note: all dev version exclusive features can only be entered via the Extra Parameters text box. The list of parameters is given below.\n\n" + output;
+            output = "Note: all dev version exclusive features can only be entered via the\nExtra Parameters text box.\n\nThe list of parameters is given below.\n\n" + output;
 
             txt_Output.Text = output;
+        }
+
+        private void btn_OpenConfig_Click(object sender, RoutedEventArgs e)
+        {
+            ConfigEditor configEditor = new ConfigEditor(txt_Config.Text);
+            configEditor.Show();
         }
 
         private bool advancedOptionsShown = false;

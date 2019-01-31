@@ -1,0 +1,53 @@
+﻿<Window x:Class="RabiRibiRandomizerUI.ConfigEditor"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:RabiRibiRandomizerUI"
+        mc:Ignorable="d"
+        Title="Config Editor" Height="620" Width="800" Background="#FFF0F0F0" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" Icon="chocolate_2.ico">
+    <Grid>
+        <Grid HorizontalAlignment="Left" Height="400" Margin="10,10,0,0" VerticalAlignment="Top" Width="275" Background="#FFBDBDBD">
+            <Label x:Name="lbl_Params" Content="Global settings" HorizontalAlignment="Center" Margin="48,0" VerticalAlignment="Top" FontSize="16" FontWeight="Bold"/>
+            <Label x:Name="lbl_Knowledge" Content="Knowledge required" HorizontalAlignment="Left" Margin="10,50,0,0" VerticalAlignment="Top"/>
+            <ComboBox x:Name="cbo_Knowledge" HorizontalAlignment="Left" Margin="145,52,0,0" VerticalAlignment="Top" Width="120" SelectedIndex="0" Background="White" IsReadOnly="True" IsEditable="True">
+                <ComboBoxItem Content="BASIC"/>
+                <ComboBoxItem Content="INTERMEDIATE"/>
+                <ComboBoxItem Content="ADVANCED"/>
+            </ComboBox>
+            <Label x:Name="lbl_Trick" Content="Trick difficulty" HorizontalAlignment="Left" Margin="10,80,0,0" VerticalAlignment="Top"/>
+            <ComboBox x:Name="cbo_Trick" HorizontalAlignment="Left" Margin="145,82,0,0" VerticalAlignment="Top" Width="120" SelectedIndex="0" Background="White" IsReadOnly="True" IsEditable="True">
+                <ComboBoxItem Content="NORMAL"/>
+                <ComboBoxItem Content="HARD"/>
+                <ComboBoxItem Content="V_HARD"/>
+                <ComboBoxItem Content="STUPID"/>
+            </ComboBox>
+            <CheckBox x:Name="chk_Darkness" Content="Darkness without Light Orb" HorizontalAlignment="Left" Margin="10,140,0,0" VerticalAlignment="Top"/>
+            <CheckBox x:Name="chk_Zip" Content="Zip required" HorizontalAlignment="Left" Margin="10,164,0,0" VerticalAlignment="Top"/>
+            <CheckBox x:Name="chk_Semisolid" Content="Semisolid clips required" HorizontalAlignment="Left" Margin="10,188,0,0" VerticalAlignment="Top"/>
+            <CheckBox x:Name="chk_Block" Content="Block clips required" HorizontalAlignment="Left" Margin="10,212,0,0" VerticalAlignment="Top"/>
+            <CheckBox x:Name="chk_Plurkwood" Content="Plurkwood reachable" HorizontalAlignment="Left" Margin="10,236,0,0" VerticalAlignment="Top"/>
+            <CheckBox x:Name="chk_Postgame" Content="Post game allowed" HorizontalAlignment="Left" Margin="10,260,0,0" VerticalAlignment="Top"/>
+            <CheckBox x:Name="chk_Irisu" Content="Post Irisu allowed" HorizontalAlignment="Left" Margin="10,284,0,0" VerticalAlignment="Top"/>
+            <CheckBox x:Name="chk_Halloween" Content="Halloween reachable" HorizontalAlignment="Left" Margin="10,308,0,0" VerticalAlignment="Top"/>
+            <CheckBox x:Name="chk_WarpDestination" Content="Warp Destination reachable" HorizontalAlignment="Left" Margin="10,332,0,0" VerticalAlignment="Top"/>
+            <CheckBox x:Name="chk_EventWarps" Content="Event warps required" HorizontalAlignment="Left" Margin="10,356,0,0" VerticalAlignment="Top"/>
+        </Grid>
+        <Grid HorizontalAlignment="Left" Height="560" Margin="290,10,0,0" VerticalAlignment="Top">
+            <Label x:Name="lbl_AllItems" Content="Item list" HorizontalAlignment="Center" Margin="10,10,0,0" VerticalAlignment="Top" FontSize="16" FontWeight="Bold"/>
+            <ListBox x:Name="lst_AllItems" HorizontalAlignment="Left" Height="498" Margin="10,62,0,-10" VerticalAlignment="Top" Width="200" SelectionChanged="lst_AllItems_SelectionChanged"/>
+        </Grid>
+        <Grid HorizontalAlignment="Right" Height="560" Margin="0,10,0,0" VerticalAlignment="Top">
+            <Label x:Name="lbl_ConfigList" Content="Current list" HorizontalAlignment="Center" Margin="0,10,10,0" VerticalAlignment="Top" FontSize="16" FontWeight="Bold"/>
+            <ListBox x:Name="lst_ConfigList" HorizontalAlignment="Right" Height="498" Margin="0,62,10,-10" VerticalAlignment="Top" Width="200" SelectionChanged="lst_ConfigList_SelectionChanged"/>
+            <Button x:Name="btn_switchAI" Tag="AI" Content="A. Items" HorizontalAlignment="Left" Margin="0,42,0,0" VerticalAlignment="Top" Width="66" Click="ChangeList"/>
+            <Button x:Name="btn_switchTS" Tag="TS" Content="To Shuffle" HorizontalAlignment="Left" Margin="67,42,0,0" VerticalAlignment="Top" Width="66" Click="ChangeList"/>
+            <Button x:Name="btn_switchMBR" Tag="MBR" Content="Reachable" HorizontalAlignment="Left" Margin="134,42,0,0" VerticalAlignment="Top" Width="66" Click="ChangeList"/>
+        </Grid>
+        <Grid HorizontalAlignment="Right" Height="560" Margin="0,10,210,0" VerticalAlignment="Top" Width="75">
+            <Button x:Name="btn_Add" Content="+" HorizontalAlignment="Left" Margin="10,296,0,0" VerticalAlignment="Top" Width="20" IsEnabled="False" Click="AddToList"/>
+            <Button x:Name="btn_Remove" Content="-" HorizontalAlignment="Right" Margin="0,296,10,0" VerticalAlignment="Top" Width="20" IsEnabled="False" Click="RemoveFromList"/>
+        </Grid>
+        <Button x:Name="btn_Save" Content="Save" HorizontalAlignment="Left" Margin="10,0,0,12" VerticalAlignment="Bottom" Width="100" Height="50" Background="#FF5AA836" Click="SaveConfig"/>
+    </Grid>
+</Window>
