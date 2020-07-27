@@ -390,8 +390,15 @@ namespace RabiRibiRandomizerUI
 
         private void btn_OpenConfig_Click(object sender, RoutedEventArgs e)
         {
-            ConfigEditor configEditor = new ConfigEditor(txt_Config.Text);
-            configEditor.Show();
+            if (!File.Exists("all_items.txt"))
+            {
+                MessageBox.Show("all_items.txt was not found.");
+            }
+            else
+            {
+                ConfigEditor configEditor = new ConfigEditor(txt_Config.Text);
+                configEditor.Show();
+            }
         }
 
         private bool advancedOptionsShown = false;

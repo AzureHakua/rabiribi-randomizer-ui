@@ -35,8 +35,15 @@ namespace RabiRibiRandomizerUI
             if (configPath != "")
             {
                 s_configPath = configPath;
+            }
+            else
+            {
+                s_configPath = "config.txt";
+            }
 
-                ConfigData config = FileIO.ReadConfig(configPath);
+            if (File.Exists(s_configPath))
+            {
+                ConfigData config = FileIO.ReadConfig(s_configPath);
 
                 for (int k = 0; k < cbo_Knowledge.Items.Count; k++)
                 {
@@ -87,13 +94,6 @@ namespace RabiRibiRandomizerUI
                 {
                     lists[l] = new List<string>();
                 }
-
-                s_configPath = "config.txt";
-            }
-
-            if (!File.Exists("all_items.txt"))
-            {
-                throw new FileNotFoundException("all_items.txt does not exist!");
             }
 
             string[] items = File.ReadAllLines("all_items.txt");
