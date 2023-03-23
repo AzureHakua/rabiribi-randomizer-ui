@@ -9,3 +9,14 @@ A UI for the Rabi-Ribi Randomizer
 [Download](https://ci.appveyor.com/project/wcko87/rabiribi-randomizer-ui-rc94b/build/artifacts)
 * randomizer-ui.zip is the stable version of the randomizer.
 * randomizer-ui-dev.zip is the development version of the randomizer and may contain new untested features. Use at your own risk.
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
